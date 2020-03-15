@@ -16,12 +16,12 @@ int main(){
     
     meusocket = socket(AF_INET,SOCK_STREAM,0);
     if(meusocket != -1){
-        printf("[+]Socket iniciado\n");
+        printf("[+]Socket iniciado!\n");
     } else {
-        perror("[-]socket() failed\n")   
+        perror("[-]socket() failed\n")
     }
     if(bind(meusocket,(struct sockaddr *)&server_addr, sizeof server_addr) == -1){
-        perror("[-]Erro ao executar bind()");
+        perror("[-]Erro ao executar bind()\n");
         printf("\n");
         return 0;
     }
@@ -30,7 +30,7 @@ int main(){
         printf("\n");
         return 0;
     } else {
-        printf("Servidor escutando na porta - %d\n",PORT);
+        printf("[+]Servidor escutando na porta - %d\n",PORT);
     }
     client_conn = accept(meusocket,(struct sockaddr *)&client_addr, &caddr_len);
     if(client_conn < 0){
@@ -38,7 +38,7 @@ int main(){
         printf("\n");
         return 0;
     } else {
-        printf("Conexão aceita!\n");
+        printf("[+]Conexão aceita!\n");
     }
 
     while(1){
