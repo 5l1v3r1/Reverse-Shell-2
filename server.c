@@ -18,7 +18,7 @@ int main(){
     if(meusocket != -1){
         printf("[+]Socket iniciado!\n");
     } else {
-        perror("[-]socket() failed\n")
+        perror("[-]socket() failed\n");
     }
     if(bind(meusocket,(struct sockaddr *)&server_addr, sizeof server_addr) == -1){
         perror("[-]Erro ao executar bind()\n");
