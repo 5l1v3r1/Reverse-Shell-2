@@ -19,7 +19,7 @@ int main(){
     client_addr.sin_addr.s_addr = inet_addr(IP);
 
     meusocket = socket(AF_INET,SOCK_STREAM,0);
-    printf("[+]Iniciando socket!");
+    printf("[+]Iniciando socket!\n");
     if (meusocket == INVALID_SOCKET){
         WSACleanup();
         perror("[-]socket() failed\n");
@@ -31,7 +31,7 @@ int main(){
         perror("[-]connect() failed\n");
         return 0;
     } else {
-        printf("[+]Conectado ao servidor - %s:%d",IP,PORT);
+        printf("[+]Conectado ao servidor - %s:%d\n",IP,PORT);
     }
     
     while(1){
