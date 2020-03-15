@@ -15,13 +15,18 @@ int main(){
     server_addr.sin_port = htons(PORT);
     
     meusocket = socket(AF_INET,SOCK_STREAM,0);
+    if(meusocket != -1){
+        printf("[+]Socket iniciado\n");
+    } else {
+        perror("[-]socket() failed\n")   
+    }
     if(bind(meusocket,(struct sockaddr *)&server_addr, sizeof server_addr) == -1){
-        perror("Erro ao executar bind()");
+        perror("[-]Erro ao executar bind()");
         printf("\n");
         return 0;
     }
     if(listen(meusocket, 1) != 0){
-        perror("Erro ao executar listen()");
+        perror("[-]Erro ao executar listen()\n");
         printf("\n");
         return 0;
     } else {
@@ -29,7 +34,7 @@ int main(){
     }
     client_conn = accept(meusocket,(struct sockaddr *)&client_addr, &caddr_len);
     if(client_conn < 0){
-        perror("Erro ao aceitar a conexão");
+        perror("[-]Erro ao aceitar a conexão\n");
         printf("\n");
         return 0;
     } else {
